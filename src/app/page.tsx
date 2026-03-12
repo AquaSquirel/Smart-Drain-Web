@@ -38,7 +38,7 @@ export default function Home() {
     { name: "Victor Hugo Nastri Proença" },
     { name: "Samuel Barbosa de Souza" },
     { name: "Daniel Morone Barbosa" },
-    { name: "Kaike" }
+    { name: "Kaike Magalhães de Souza" }
   ];
 
   return (

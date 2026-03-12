@@ -40,7 +40,7 @@ O ecossistema completo do Smart Drain envolve:
 - Victor Hugo Nastri Proença
 - Samuel Barbosa de Souza
 - Daniel Morone Barbosa
-- Kaike
+- Kaike Magalhães de Souza
 
 ---
 
