@@ -156,11 +156,27 @@ export default function Home() {
             </div>
             <div className="relative group">
               <div className="absolute -inset-4 bg-blue-500/10 rounded-[3rem] blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
-              <div className="relative aspect-video rounded-[2rem] bg-slate-900 border border-slate-800 overflow-hidden flex items-center justify-center p-8 text-center">
-                 <div className="space-y-4">
-                    <Waves className="w-16 h-16 text-blue-500/50 mx-auto" />
-                    <p className="text-xs font-mono text-slate-500 uppercase tracking-widest">Representação Gráfica: <br/> Fluxo de Vazão Crítico</p>
+              <div className="relative aspect-video rounded-[2rem] bg-slate-950 border border-slate-800 overflow-hidden flex flex-col items-center justify-center p-0 text-center shadow-2xl">
+                 {/* Wave Animation Background */}
+                 <div className="absolute inset-0 opacity-20 pointer-events-none">
+                    <svg className="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
+                      <path d="M0 100 C 100 50, 300 150, 400 100 L 400 200 L 0 200 Z" fill="#3b82f6" className="animate-[wave_8s_ease-in-out_infinite]" />
+                      <path d="M0 120 C 150 80, 250 160, 400 120 L 400 200 L 0 200 Z" fill="#60a5fa" className="animate-[wave_12s_ease-in-out_infinite_reverse]" opacity="0.5" />
+                    </svg>
                  </div>
+                 
+                 <div className="relative z-10 p-8 space-y-4">
+                    <div className="flex justify-center gap-1">
+                      {[1,2,3,4,5].map(i => (
+                        <div key={i} className={`w-1 bg-blue-500/50 rounded-full animate-pulse`} style={{ height: `${20 + i*8}px`, animationDelay: `${i*0.2}s` }} />
+                      ))}
+                    </div>
+                    <p className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-bold">Fluxo de Vazão Crítico</p>
+                    <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest max-w-[200px]">Simulação hidrológica em tempo real para prevenção de transbordamento</p>
+                 </div>
+
+                 {/* Scanline Effect */}
+                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent h-12 w-full animate-[scan_4s_linear_infinite] pointer-events-none"></div>
               </div>
             </div>
           </div>
