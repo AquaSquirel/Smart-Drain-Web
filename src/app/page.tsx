@@ -147,11 +147,11 @@ export default function Home() {
                   <AlertTriangle className="w-4 h-4" /> FOCO: SOROCABA/SP
                 </div>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Em nossa cidade, a **Avenida Dom Aguirre** é o exemplo mais crítico. Basta uma chuva intensa para que o nível do Rio Sorocaba suba e as galerias pluviais transbordem, paralisando a principal via da cidade e isolando bairros inteiros.
+                  Em nossa cidade, a <strong className="text-white font-bold">Avenida Dom Aguirre</strong> é o exemplo mais crítico. Basta uma chuva intensa para que o nível do Rio Sorocaba suba e as galerias pluviais transbordem, paralisando a principal via da cidade e isolando bairros inteiros.
                 </p>
               </div>
               <p className="text-slate-400 leading-relaxed">
-                Escolhemos este projeto pois acreditamos que a tecnologia deve servir à segurança pública. Monitorar o bueiro é o primeiro passo para uma cidade que não apenas reage ao desastre, mas o antecipa através da **Engenharia**.
+                Escolhemos este projeto pois acreditamos que a tecnologia deve servir à segurança pública. Monitorar o bueiro é o primeiro passo para uma cidade que não apenas reage ao desastre, mas o antecipa através da <strong className="text-blue-400 font-bold italic">Engenharia</strong>.
               </p>
             </div>
             <div className="relative group">
