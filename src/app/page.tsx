@@ -17,19 +17,20 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const [level, setLevel] = useState(12);
+  const [level, setLevel] = useState(12.4);
   const [status, setStatus] = useState("Normal");
-  const [history, setHistory] = useState<number[]>(Array(60).fill(12));
+  const [history, setHistory] = useState<number[]>(Array(60).fill(12.4));
 
   useEffect(() => {
-    let baseLevel = 12;
     const interval = setInterval(() => {
-      // Simulação de movimento de fluido (mais suave que ruído puro)
-      const flow = Math.sin(Date.now() / 2000) * 0.5;
-      const noise = (Math.random() - 0.5) * 0.3;
-      
       setLevel(prev => {
-        const next = Math.max(10, Math.min(prev + flow + noise, 80));
+        // Lógica de simulação mais estável: Pequena oscilação em torno de um valor base
+        const baseLevel = 12.4;
+        const wave = Math.sin(Date.now() / 3000) * 0.4; // Onda lenta de 3s
+        const noise = (Math.random() - 0.5) * 0.15; // Ruído muito sutil
+        
+        const next = Math.max(10, Math.min(baseLevel + wave + noise, 80));
+        
         if (next > 60) setStatus("Crítico");
         else if (next > 40) setStatus("Alerta");
         else setStatus("Normal");
@@ -37,7 +38,7 @@ export default function Home() {
         setHistory(h => [...h.slice(1), next]);
         return next;
       });
-    }, 150);
+    }, 200);
     return () => clearInterval(interval);
   }, []);
 
@@ -50,7 +51,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-blue-500/30 overflow-x-hidden italic-none">
+    <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-blue-500/30 overflow-x-hidden">
       {/* Background Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
@@ -65,12 +66,12 @@ export default function Home() {
 
         <main className="flex-1 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 max-w-7xl mx-auto w-full px-6 py-4 overflow-hidden text-center lg:text-left">
           <div className="lg:w-3/5 space-y-4 lg:space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-mono tracking-tighter uppercase font-bold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-mono tracking-widest uppercase font-bold">
               <Activity className="w-3 h-3 animate-pulse" /> PROTOTYPE_01 ACTIVE
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tighter">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight pr-4">
               Engenharia contra <br className="hidden lg:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 italic font-black uppercase">Enchentes Urbanas.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 italic font-black uppercase inline-block pb-2">Enchentes Urbanas.</span>
             </h2>
             <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Monitoramento preventivo de galerias pluviais em Sorocaba. Hardware real, dados em nuvem, segurança pública.
@@ -136,12 +137,12 @@ export default function Home() {
               <p className="text-slate-400 leading-relaxed text-sm md:text-base font-medium">
                 Anualmente, milhares de brasileiros sofrem com as consequências devastadoras das enchentes urbanas. O que antes eram eventos raros, tornaram-se rotina nas grandes cidades, destruindo infraestruturas e colocando vidas em risco.
               </p>
-              <div className="p-6 rounded-3xl bg-red-500/5 border border-red-500/10 space-y-4 relative overflow-hidden group">
+              <div className="p-6 rounded-3xl bg-red-500/5 border border-red-500/10 space-y-4 relative overflow-hidden group border-l-4 border-l-red-500">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-red-500/10 transition-colors"></div>
                 <div className="flex items-center gap-2 text-red-400 font-bold text-sm uppercase tracking-widest">
                   <AlertTriangle className="w-4 h-4" /> FOCO CRÍTICO: SOROCABA/SP
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed relative z-10 font-medium">
+                <p className="text-sm text-slate-300 leading-relaxed relative z-10 font-medium italic">
                   Em nossa cidade, a <strong className="text-white font-black italic uppercase underline decoration-red-500/50 underline-offset-4">Avenida Dom Aguirre</strong> é o exemplo mais crítico. Basta uma chuva intensa para que o nível do Rio Sorocaba suba e as galerias pluviais transbordem, paralisando a principal via da cidade e isolando bairros inteiros.
                 </p>
               </div>
@@ -150,12 +151,10 @@ export default function Home() {
               </p>
             </div>
             
-            {/* GRÁFICO TÉCNICO DE TELEMETRIA (ESTILO OSCILOSCÓPIO) */}
             <div className="relative group w-full">
               <div className="absolute -inset-4 bg-blue-500/10 rounded-[3rem] blur-2xl group-hover:bg-blue-500/15 transition-all"></div>
               <div className="relative aspect-video rounded-[2.5rem] bg-[#020617] border border-slate-800/80 overflow-hidden flex flex-col p-4 md:p-6 shadow-2xl ring-1 ring-white/5">
                 
-                {/* Overlay Simulação */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#3b82f605_0%,transparent_70%)] pointer-events-none"></div>
                 
                 <div className="flex justify-between items-start mb-6 relative z-10">
@@ -163,30 +162,26 @@ export default function Home() {
                     <p className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.2em] font-black italic">Telemetria de Fluxo</p>
                     <p className="text-[8px] font-mono text-slate-600 uppercase font-bold tracking-widest">Amostragem: 5Hz | Buffer: 60pts | Ref: 04-A</p>
                   </div>
-                  <div className="flex flex-col items-end gap-1">
+                  <div className="flex flex-col items-end gap-1 text-right">
                     <div className="px-2 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[8px] font-mono font-black uppercase tracking-widest rounded shadow-lg shadow-amber-500/5">
                       Sintético: Simulação
                     </div>
-                    <div className="text-[8px] font-mono text-slate-700 uppercase font-bold tracking-tighter italic">* Dados gerados por software</div>
+                    <div className="text-[8px] font-mono text-slate-700 uppercase font-bold tracking-tighter italic whitespace-nowrap">* Dados gerados por software</div>
                   </div>
                 </div>
 
-                {/* Área do Gráfico */}
                 <div className="relative flex-1 bg-slate-900/40 rounded-xl border border-white/5 overflow-hidden shadow-inner backdrop-blur-[2px]">
                    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                      {/* Grid Lines Horizontais Progressivas */}
                       {[10, 30, 50, 70, 90].map(y => (
                         <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
                       ))}
                       
-                      {/* Área Sombreada com Degradê Neon */}
                       <path
                         fill="url(#techGradient)"
                         d={`M -5 100 ${history.map((val, i) => `L ${(i / (history.length - 1)) * 110 - 5} ${100 - (val / 80) * 100}`).join(' ')} L 105 100 Z`}
                         className="transition-all duration-300 opacity-20"
                       />
                       
-                      {/* Linha do Gráfico com Filtro de Brilho */}
                       <polyline
                         fill="none"
                         stroke="#3b82f6"
@@ -194,14 +189,13 @@ export default function Home() {
                         strokeLinejoin="round"
                         strokeLinecap="round"
                         points={history.map((val, i) => `${(i / (history.length - 1)) * 110 - 5},${100 - (val / 80) * 100}`).join(' ')}
-                        className="transition-all duration-300 drop-shadow-[0_0_8px_#3b82f6]"
+                        className="transition-all duration-500 drop-shadow-[0_0_8px_#3b82f6]"
                       />
 
-                      {/* Pontos de Amostragem (Vértices Síncronos) */}
-                      {history.filter((_, idx) => idx % 10 === 0).map((val, i) => (
+                      {history.filter((_, idx) => idx % 12 === 0).map((val, i) => (
                         <circle 
                           key={i} 
-                          cx={`${(i * 10 / (history.length - 1)) * 110 - 5}`} 
+                          cx={`${(i * 12 / (history.length - 1)) * 110 - 5}`} 
                           cy={`${100 - (val / 80) * 100}`} 
                           r="0.5" 
                           fill="#60a5fa" 
@@ -217,14 +211,13 @@ export default function Home() {
                       </defs>
                    </svg>
                    
-                   {/* Linha de Varredura Sutil */}
                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent w-24 h-full animate-[scan_8s_linear_infinite] pointer-events-none"></div>
                 </div>
 
                 <div className="mt-4 flex justify-between items-center font-mono text-[9px] uppercase tracking-[0.2em] font-black">
                    <div className="flex gap-4 items-center">
                      <span className="text-slate-600 flex items-center gap-1"><div className="w-1.5 h-1.5 bg-blue-500 rounded-sm"></div> HISTÓRICO_VITAL</span>
-                     <span className="text-slate-700 hidden md:inline">REF_X: 100ms</span>
+                     <span className="text-slate-700 hidden md:inline">REF_X: 200ms</span>
                    </div>
                    <div className="text-white px-3 py-1 bg-white/5 rounded-full ring-1 ring-white/10 italic">
                      VALOR_ATUAL: {level.toFixed(1)} cm
