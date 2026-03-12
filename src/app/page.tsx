@@ -24,12 +24,12 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setLevel(prev => {
-        // Lógica de simulação mais estável: Pequena oscilação em torno de um valor base
+        // Lógica de simulação ultra-estável: Onda muito lenta e ruído mínimo
         const baseLevel = 12.4;
-        const wave = Math.sin(Date.now() / 3000) * 0.4; // Onda lenta de 3s
-        const noise = (Math.random() - 0.5) * 0.15; // Ruído muito sutil
+        const slowWave = Math.sin(Date.now() / 5000) * 0.3; // Ciclo de 5 segundos para uma variação de apenas 0.3cm
+        const microNoise = (Math.random() - 0.5) * 0.05; // Ruído quase imperceptível nos decimais
         
-        const next = Math.max(10, Math.min(baseLevel + wave + noise, 80));
+        const next = Math.max(10, Math.min(baseLevel + slowWave + microNoise, 80));
         
         if (next > 60) setStatus("Crítico");
         else if (next > 40) setStatus("Alerta");
@@ -38,7 +38,7 @@ export default function Home() {
         setHistory(h => [...h.slice(1), next]);
         return next;
       });
-    }, 200);
+    }, 500); // Atualiza apenas 2 vezes por segundo (500ms)
     return () => clearInterval(interval);
   }, []);
 
