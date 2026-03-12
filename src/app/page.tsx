@@ -130,6 +130,41 @@ export default function Home() {
       {/* --- SEGUNDA PÁGINA EM DIANTE (SCROLLABLE) --- */}
       <div className="max-w-7xl mx-auto px-6 space-y-32 pb-24">
         
+        {/* Context & Why Section */}
+        <section id="contexto" className="pt-20 scroll-mt-24">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <h3 className="text-xs font-mono text-blue-500 uppercase tracking-[0.3em]">O Problema Real</h3>
+              <h2 className="text-4xl md:text-5xl font-black text-white italic leading-tight">
+                Por que o <span className="text-blue-500 underline decoration-white/10">Smart Drain</span> é vital?
+              </h2>
+              <p className="text-slate-400 leading-relaxed">
+                Anualmente, milhares de brasileiros sofrem com as consequências devastadoras das enchentes urbanas. O que antes eram eventos raros, tornaram-se rotina nas grandes cidades, destruindo infraestruturas e colocando vidas em risco.
+              </p>
+              <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/10 space-y-4">
+                <div className="flex items-center gap-2 text-red-400 font-bold text-sm">
+                  <AlertTriangle className="w-4 h-4" /> FOCO: SOROCABA/SP
+                </div>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  Em nossa cidade, a **Avenida Dom Aguirre** é o exemplo mais crítico. Basta uma chuva intensa para que o nível do Rio Sorocaba suba e as galerias pluviais transbordem, paralisando a principal via da cidade e isolando bairros inteiros.
+                </p>
+              </div>
+              <p className="text-slate-400 leading-relaxed">
+                Escolhemos este projeto pois acreditamos que a tecnologia deve servir à segurança pública. Monitorar o bueiro é o primeiro passo para uma cidade que não apenas reage ao desastre, mas o antecipa através da **Engenharia**.
+              </p>
+            </div>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-blue-500/10 rounded-[3rem] blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+              <div className="relative aspect-video rounded-[2rem] bg-slate-900 border border-slate-800 overflow-hidden flex items-center justify-center p-8 text-center">
+                 <div className="space-y-4">
+                    <Waves className="w-16 h-16 text-blue-500/50 mx-auto" />
+                    <p className="text-xs font-mono text-slate-500 uppercase tracking-widest">Representação Gráfica: <br/> Fluxo de Vazão Crítico</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Technical Specs */}
         <section id="tech" className="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-mt-24">
           <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-blue-500/30 transition-all">
