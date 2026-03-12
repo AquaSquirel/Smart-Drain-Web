@@ -24,10 +24,9 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setLevel(prev => {
-        // Lógica de simulação ultra-estável: Onda muito lenta e ruído mínimo
         const baseLevel = 12.4;
-        const slowWave = Math.sin(Date.now() / 5000) * 0.3; // Ciclo de 5 segundos para uma variação de apenas 0.3cm
-        const microNoise = (Math.random() - 0.5) * 0.05; // Ruído quase imperceptível nos decimais
+        const slowWave = Math.sin(Date.now() / 5000) * 0.3;
+        const microNoise = (Math.random() - 0.5) * 0.05;
         
         const next = Math.max(10, Math.min(baseLevel + slowWave + microNoise, 80));
         
@@ -38,7 +37,7 @@ export default function Home() {
         setHistory(h => [...h.slice(1), next]);
         return next;
       });
-    }, 500); // Atualiza apenas 2 vezes por segundo (500ms)
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -125,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* --- SEGUNDA PÁGINA --- */}
-      <div className="max-w-7xl mx-auto px-6 space-y-32 pb-24">
+      <div className="max-w-7xl mx-auto px-6 space-y-32">
         
         <section id="contexto" className="pt-20 scroll-mt-24">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -151,6 +150,7 @@ export default function Home() {
               </p>
             </div>
             
+            {/* GRÁFICO TÉCNICO DE TELEMETRIA */}
             <div className="relative group w-full">
               <div className="absolute -inset-4 bg-blue-500/10 rounded-[3rem] blur-2xl group-hover:bg-blue-500/15 transition-all"></div>
               <div className="relative aspect-video rounded-[2.5rem] bg-[#020617] border border-slate-800/80 overflow-hidden flex flex-col p-4 md:p-6 shadow-2xl ring-1 ring-white/5">
@@ -245,7 +245,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid md:grid-cols-3 gap-12">
+        <section className="grid md:grid-cols-3 gap-12 pb-32">
           <div className="md:col-span-2 space-y-10">
              <h3 className="text-3xl font-black italic flex items-center gap-4 tracking-tighter uppercase text-white">
                <Users className="w-8 h-8 text-blue-500" /> Corpo Docente e Acadêmicos
@@ -276,15 +276,21 @@ export default function Home() {
             </p>
           </div>
         </section>
-
-        <footer className="pt-16 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-6 opacity-30 group hover:opacity-60 transition-opacity">
-          <p className="text-[10px] font-mono uppercase tracking-[0.5em] italic font-black text-white">Smart Drain Project // Global Systems</p>
-          <div className="flex gap-8">
-            <Github className="w-5 h-5 hover:text-blue-500 cursor-pointer transition-all" />
-            <ExternalLink className="w-5 h-5 hover:text-blue-500 cursor-pointer transition-all" />
-          </div>
-        </footer>
       </div>
+
+      {/* FOOTER - Movido para fora e com margem superior maior */}
+      <footer className="w-full bg-[#020617] border-t border-slate-800/50 py-16 mt-32">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40 group hover:opacity-100 transition-all duration-500">
+          <div className="space-y-2 text-center md:text-left">
+            <p className="text-[10px] font-mono uppercase tracking-[0.5em] italic font-black text-white">Smart Drain Project // Global Systems</p>
+            <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Inovação em Drenagem Urbana Inteligente</p>
+          </div>
+          <div className="flex gap-10">
+            <Github className="w-5 h-5 hover:text-blue-500 cursor-pointer transition-all hover:scale-110" />
+            <ExternalLink className="w-5 h-5 hover:text-blue-500 cursor-pointer transition-all hover:scale-110" />
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
