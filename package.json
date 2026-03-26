@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite dev --port 3001",
-    "build": "vite build",
-    "start": "vite preview",
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "vinext start",
     "lint": "eslint",
     "next:dev": "next dev",
     "next:build": "next build"
@@ -17,6 +17,7 @@
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.30.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -30,7 +31,8 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vinext": "^0.0.35",
-    "vite": "^8.0.3"
+    "vite": "^8.0.3",
+    "wrangler": "^4.77.0"
   },
   "type": "module"
 }
