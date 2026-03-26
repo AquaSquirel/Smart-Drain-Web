@@ -474,11 +474,11 @@ export default function Home() {
   }, [updateLevel]);
 
   const members = [
-    { name: "Mateus Sonnenberg Amaral", role: "Engenharia & Dev" },
-    { name: "Victor Hugo Nastri Proença", role: "Hardware & IoT" },
-    { name: "Samuel Barbosa de Souza", role: "Sistemas Embarcados" },
-    { name: "Daniel Morone Barbosa", role: "Backend & Cloud" },
-    { name: "Kaike Magalhães de Souza", role: "Frontend & UX" },
+    { name: "Mateus Sonnenberg Amaral" },
+    { name: "Victor Hugo Nastri Proença" },
+    { name: "Samuel Barbosa de Souza" },
+    { name: "Daniel Morone Barbosa" },
+    { name: "Kaike Magalhães de Souza" },
   ];
 
   const cfg = STATUS_CONFIG[status];
@@ -573,7 +573,7 @@ export default function Home() {
             <div className="space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-mono tracking-widest uppercase font-bold">
                 <Activity className="w-3 h-3 animate-pulse" />
-                Projeto UPX · Facens 2026 · Sorocaba/SP
+                Projeto UPX · Facens 2026
               </div>
 
               <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-black text-white leading-[1] tracking-tight">
@@ -583,16 +583,16 @@ export default function Home() {
               </h1>
 
               <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-                Smart Drain monitora o nível d&apos;água em galerias pluviais de Sorocaba
+                Smart Drain monitora o nível d&apos;água em galerias pluviais
                 em tempo real. Sensores IoT, alertas automáticos e prevenção antes do desastre.
               </p>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                 <a
-                  href="#sistema"
+                  href="#aovivo-ex"
                   className="group px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm transition-all flex items-center gap-2 shadow-lg shadow-blue-600/25"
                 >
-                  Ver sistema ao vivo
+                  Ver exemplo ao vivo (simulacão)
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </a>
                 <a
@@ -692,7 +692,7 @@ export default function Home() {
         {/* ═══════════════════════════════════════════════════════
             COMO FUNCIONA
         ═══════════════════════════════════════════════════════ */}
-        <section id="sistema">
+        <section id="sistema" className="scroll-mt-24">
           <div className="text-center mb-12 space-y-3">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-black">
               <Zap className="w-3 h-3" /> Como funciona
@@ -742,14 +742,14 @@ export default function Home() {
         {/* ═══════════════════════════════════════════════════════
             TELEMETRIA AO VIVO
         ═══════════════════════════════════════════════════════ */}
-        <section>
+        <section id="aovivo-ex" className="scroll-mt-24">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
               <div className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-black mb-2 flex items-center gap-2">
                 <Radio className="w-3 h-3 animate-pulse" /> Telemetria em tempo real
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-white">
-                PRAÇA LIONS · Feed ao vivo
+                PRAÇA LIONS · Feed ao vivo (simulação)
               </h2>
             </div>
             <div className={`flex items-center gap-3 px-4 py-2 rounded-xl border ${cfg.border} ${cfg.bg} transition-all duration-700`}>
@@ -907,7 +907,7 @@ export default function Home() {
         {/* ═══════════════════════════════════════════════════════
             SISTEMA DE ALERTAS
         ═══════════════════════════════════════════════════════ */}
-        <section id="alertas">
+        <section id="alertas" className="scroll-mt-24">
           <div className="mb-10">
             <div className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-black mb-2 flex items-center gap-2">
               <Shield className="w-3 h-3" /> Sistema de alertas
@@ -960,7 +960,7 @@ export default function Home() {
         {/* ═══════════════════════════════════════════════════════
             CONTEXTO
         ═══════════════════════════════════════════════════════ */}
-        <section id="sistema" className="grid lg:grid-cols-2 gap-16 items-center">
+        <section id="contexto" className="grid lg:grid-cols-2 gap-16 items-center scroll-mt-24">
           <div className="space-y-6 order-2 lg:order-1">
             <div className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-black flex items-center gap-2">
               <CloudRain className="w-3 h-3" /> Contexto Regional
@@ -1107,7 +1107,7 @@ export default function Home() {
         {/* ═══════════════════════════════════════════════════════
             HARDWARE
         ═══════════════════════════════════════════════════════ */}
-        <section id="hardware">
+        <section id="hardware" className="scroll-mt-24">
           <div className="mb-10">
             <div className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-black mb-2 flex items-center gap-2">
               <Cpu className="w-3 h-3" /> Stack de Hardware
@@ -1124,7 +1124,7 @@ export default function Home() {
                 icon: Cpu,
                 color: "#3b82f6",
                 tag: "Processamento",
-                title: "ESP32-WROOM-32",
+                title: "ESP32",
                 specs: [
                   "Dual-core Xtensa LX6 · 240MHz",
                   "Wi-Fi 802.11b/g/n integrado",
@@ -1248,7 +1248,7 @@ export default function Home() {
         {/* ═══════════════════════════════════════════════════════
             TIME
         ═══════════════════════════════════════════════════════ */}
-        <section id="time" className="pb-8">
+        <section id="time" className="pb-8 scroll-mt-24">
           <div className="mb-10">
             <div className="text-[10px] font-mono text-blue-400 uppercase tracking-[0.4em] font-black mb-2 flex items-center gap-2">
               <Users className="w-3 h-3" /> Equipe
@@ -1273,9 +1273,6 @@ export default function Home() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-white text-sm font-bold truncate">{m.name}</div>
-                    <div className="text-slate-600 text-[10px] font-mono uppercase tracking-widest font-bold">
-                      {m.role}
-                    </div>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-700 group-hover:text-blue-400 transition-colors shrink-0" />
                 </div>
@@ -1318,7 +1315,7 @@ export default function Home() {
                     { done: true, label: "Sistema de alertas por nível" },
                     { done: false, label: "Hardware físico (ESP32 + sensor)" },
                     { done: false, label: "Integração firmware ↔ dashboard" },
-                    { done: false, label: "Instalação piloto · Praça Lions" },
+                    { done: false, label: "Instalação piloto" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 text-xs">
                       <div
@@ -1358,7 +1355,7 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-slate-600 text-[10px] font-mono uppercase tracking-widest font-bold">
-                Inovação em Drenagem Urbana Inteligente · Sorocaba, SP
+                Inovação em Drenagem Urbana Inteligente
               </p>
               <p className="text-slate-700 text-[10px] font-mono">
                 Facens · Engenharia da Computação · UPX 2026
