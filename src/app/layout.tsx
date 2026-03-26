@@ -1,17 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "Smart Drain | UPX Facens",
-  description: "Sistema inteligente de monitoramento de galerias pluviais para Smart Cities - Projeto UPX Facens 1º Semestre.",
+  title: "Smart Drain | Monitoramento Inteligente de Enchentes",
+  description:
+    "Sistema IoT de monitoramento preventivo de galerias pluviais em Sorocaba, SP. Antes da enchente chegar. Projeto UPX Facens 2026.",
   manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#06090f",
 };
 
 export default function RootLayout({
@@ -20,8 +31,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="pt-BR"
+      className={`scroll-smooth ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
