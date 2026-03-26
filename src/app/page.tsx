@@ -51,6 +51,14 @@ const STATUS_CONFIG = {
 // ─── Rain Background ─────────────────────────────────────────────────────────
 
 function RainBackground({ intensity = 20 }: { intensity?: number }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   const drops = Array.from({ length: intensity }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
@@ -66,13 +74,15 @@ function RainBackground({ intensity = 20 }: { intensity?: number }) {
         <div
           key={d.id}
           className="rain-drop"
-          style={{
-            left: d.left,
-            height: d.height,
-            "--duration": d.duration,
-            "--delay": d.delay,
-            opacity: d.opacity,
-          } as React.CSSProperties}
+          style={
+            {
+              left: d.left,
+              height: d.height,
+              "--duration": d.duration,
+              "--delay": d.delay,
+              opacity: d.opacity,
+            } as any
+          }
         />
       ))}
     </div>
